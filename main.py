@@ -23,11 +23,8 @@ class SalesForce(MDApp):
         try:
             self.cli = socket(AF_INET, SOCK_STREAM)
             self.cli.connect((server,44421))
-            print('Concetado com Sucesso')
             self.root.current = 'mainwin'
-        except Exception as e: 
-            print(e)
-
+        except Exception as e: ...
 
     def enviarMsg(self, msg):
         try:
@@ -35,5 +32,5 @@ class SalesForce(MDApp):
             self.cli.send(msgPost.encode())
         except: 
             self.root.current = 'loginwin'
-            print('Reconecte')
+            
 SalesForce().run()
