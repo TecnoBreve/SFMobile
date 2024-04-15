@@ -30,6 +30,7 @@ class SalesForce(MDApp):
 
 
     def enviarMsg(self, msg):
-        self.cli.send(msg.encode())
+        msgPost = str({'user':self.user, 'text':msg})
+        self.cli.send(msgPost.encode())
 
 SalesForce().run()

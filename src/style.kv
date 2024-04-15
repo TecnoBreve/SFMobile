@@ -2,7 +2,6 @@
     name: 'loginwin'
     MDFloatLayout:
         MDTextField:
-            hint_text: 'Servidor'
             id: serverEntry
             text: 'localhost'
             pos_hint: {"center_x": .5, "center_y": .6}
@@ -41,9 +40,7 @@
     name: 'mainwin'
     MDFloatLayout:
         MDTextField:
-            hint_text: 'Servidor'
             id: msgEntry
-            text: 'localhost'
             pos_hint: {"center_x": .5, "center_y": .5}
             size_hint_x: .6
 
@@ -52,6 +49,7 @@
                 
             MDTextFieldLeadingIcon:
                 icon: "chat"
+
         MDButton:
             style: "outlined"
             pos_hint: {"center_x": .5, "center_y": .4}
