@@ -30,7 +30,10 @@ class SalesForce(MDApp):
 
 
     def enviarMsg(self, msg):
-        msgPost = str({'user':self.user, 'text':msg})
-        self.cli.send(msgPost.encode())
-
+        try:
+            msgPost = str({'user':self.user, 'text':msg})
+            self.cli.send(msgPost.encode())
+        except: 
+            self.root.current = 'loginwin'
+            print('Reconecte')
 SalesForce().run()
