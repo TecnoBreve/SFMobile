@@ -1,0 +1,61 @@
+<LoginWin>
+    name: 'loginwin'
+    MDFloatLayout:
+        MDTextField:
+            id: serverEntry
+            text: 'localhost'
+            pos_hint: {"center_x": .5, "center_y": .6}
+            size_hint_x: .6
+
+            MDTextFieldHintText:
+                text: "Servidor"
+                
+            MDTextFieldLeadingIcon:
+                icon: "server"
+
+
+        MDTextField:
+            mode: 'outlined'
+            id: uidEntry
+            pos_hint: {"center_x": .5, "center_y": .5}
+            size_hint_x: .6
+
+            MDTextFieldHintText:
+                text: "Usuario"
+
+            MDTextFieldLeadingIcon:
+                icon: "account"
+        
+        MDButton:
+            style: "outlined"
+            pos_hint: {"center_x": .5, "center_y": .35}
+            on_release: 
+                app.connServer(serverEntry.text, uidEntry.text)
+            MDButtonText:
+                text: 'Conectar'
+            MDButtonIcon:
+                icon: "connection"
+
+<MainWin>
+    name: 'mainwin'
+    MDFloatLayout:
+        MDTextField:
+            id: msgEntry
+            pos_hint: {"center_x": .5, "center_y": .5}
+            size_hint_x: .6
+
+            MDTextFieldHintText:
+                text: "Mensagem"
+                
+            MDTextFieldLeadingIcon:
+                icon: "chat"
+
+        MDButton:
+            style: "outlined"
+            pos_hint: {"center_x": .5, "center_y": .4}
+            on_release: 
+                app.enviarMsg(msgEntry.text)
+            MDButtonText:
+                text: 'Enviar'
+            MDButtonIcon:
+                icon: "send"

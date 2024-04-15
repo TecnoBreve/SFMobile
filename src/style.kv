@@ -3,38 +3,26 @@
     MDFloatLayout:
         MDTextField:
             id: serverEntry
+            hint_text: "Servidor"
             text: 'localhost'
+            # icon: "server"
             pos_hint: {"center_x": .5, "center_y": .6}
             size_hint_x: .6
 
-            MDTextFieldHintText:
-                text: "Servidor"
-                
-            MDTextFieldLeadingIcon:
-                icon: "server"
-
-
         MDTextField:
-            mode: 'outlined'
             id: uidEntry
+            text: "Usuario"
+            # icon: "account"
             pos_hint: {"center_x": .5, "center_y": .5}
             size_hint_x: .6
 
-            MDTextFieldHintText:
-                text: "Usuario"
-
-            MDTextFieldLeadingIcon:
-                icon: "account"
-        
-        MDButton:
-            style: "outlined"
+        MDRectangleFlatIconButton:
+            # style: "outlined"
             pos_hint: {"center_x": .5, "center_y": .35}
+            text: 'Conectar'
+            icon: "connection"
             on_release: 
                 app.connServer(serverEntry.text, uidEntry.text)
-            MDButtonText:
-                text: 'Conectar'
-            MDButtonIcon:
-                icon: "connection"
 
 <MainWin>
     name: 'mainwin'
@@ -43,19 +31,13 @@
             id: msgEntry
             pos_hint: {"center_x": .5, "center_y": .5}
             size_hint_x: .6
+            hint_text: "Mensagem"
+            # icon: "chat"
 
-            MDTextFieldHintText:
-                text: "Mensagem"
-                
-            MDTextFieldLeadingIcon:
-                icon: "chat"
-
-        MDButton:
-            style: "outlined"
+        MDRectangleFlatIconButton:
+            # style: "outlined"
             pos_hint: {"center_x": .5, "center_y": .4}
+            text: 'Enviar'
+            icon: "send"
             on_release: 
                 app.enviarMsg(msgEntry.text)
-            MDButtonText:
-                text: 'Enviar'
-            MDButtonIcon:
-                icon: "send"
