@@ -5,19 +5,18 @@
             id: serverEntry
             hint_text: "Servidor"
             text: 'localhost'
-            # icon: "server"
+            icon_left: "server"
             pos_hint: {"center_x": .5, "center_y": .6}
             size_hint_x: .6
 
         MDTextField:
             id: uidEntry
-            text: "Usuario"
-            # icon: "account"
+            hint_text: "Usuario"
             pos_hint: {"center_x": .5, "center_y": .5}
             size_hint_x: .6
+            icon_left: "account"
 
         MDRectangleFlatIconButton:
-            # style: "outlined"
             pos_hint: {"center_x": .5, "center_y": .35}
             text: 'Conectar'
             icon: "connection"
@@ -28,16 +27,58 @@
     name: 'mainwin'
     MDFloatLayout:
         MDTextField:
-            id: msgEntry
+            id: cmdEntry
+            pos_hint: {"center_x": .5, "center_y": .6}
+            size_hint_x: .6
+            hint_text: "Comanda"
+            icon_left: "card-account-details"
+            input_type: 'number'
+
+        MDTextField:
+            id: tableEntry
             pos_hint: {"center_x": .5, "center_y": .5}
             size_hint_x: .6
-            hint_text: "Mensagem"
-            # icon: "chat"
+            hint_text: "Mesa"
+            icon_left: "table-furniture"
+            input_type: 'number'
 
         MDRectangleFlatIconButton:
-            # style: "outlined"
             pos_hint: {"center_x": .5, "center_y": .4}
-            text: 'Enviar'
-            icon: "send"
-            on_release: 
-                app.enviarMsg(msgEntry.text)
+            text: 'Pedido'
+            icon: "beer"
+            size_hint_x: .6
+            on_release: app.changeProd(tableEntry.text, cmdEntry.text)
+
+<Produtos>
+    name: 'prodwin'
+    MDBoxLayout:
+        orientation: 'horizontal'
+        MDScrollView:
+            MDList:
+                id: cont
+
+        
+        MDFloatLayout:
+            MDLabel:
+                pos_hint: {"center_x": .5, "center_y": .95}
+                id: lblDados
+                halign: 'center'
+                text: 'Mesa: XX | Comanda: XX'
+            MDScrollView:
+                pos_hint: {"center_x": .5, "center_y": .75}
+                size_hint_y: .3
+                MDList:
+                    id: contBefore
+                    MDLabel:
+                        halign: 'center'
+                        text: 'Pedido Atual:'
+            MDRectangleFlatIconButton:
+                pos_hint: {"center_x": .5, "center_y": .2}
+                size_hint_x: .7
+                text: "Limpar Pedido(s)"
+                on_release: app.clearList()
+            MDRectangleFlatIconButton:
+                pos_hint: {"center_x": .5, "center_y": .1}
+                size_hint_x: .7
+                text: "Enviar Pedido"
+                on_release: app.enviarPedido()
