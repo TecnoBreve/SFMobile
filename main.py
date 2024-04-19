@@ -29,10 +29,14 @@ class SalesForce(MDApp):
         self.idsProd = self.root.get_screen('prodwin').ids
         produtos = [
             'Chopp Trad. 550ml',
+            'Chopp Trad. 550ml com borda',
             'Chopp Trad. 330ml',
+            'Chopp Trad. 330ml com borda',
             'Chopp Vinho 550ml',
             'Chopp Vinho 330ml',
-            'Com borda',
+            'Medalhão de Carne',
+            'Medalhão de Frango',
+            'Kafta com Queijo'
         ]
         for item in produtos:
             self.idsProd.cont.add_widget(
@@ -56,7 +60,7 @@ class SalesForce(MDApp):
         self.user = uid
         try:
             self.cli = socket(AF_INET, SOCK_STREAM)
-            self.cli.connect((server,44421))
+            self.cli.connect((server,12000))
             self.root.current = 'mainwin'
         except Exception as e: 
             toast(f'Conexão Invalida - {e}')
