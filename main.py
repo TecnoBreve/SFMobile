@@ -56,11 +56,11 @@ class SalesForce(MDApp):
             )
             self.pedido.append(item)
 
-    def connServer(self, server, uid):
+    def connServer(self, server, uid, port = 80):
         self.user = uid
         try:
             self.cli = socket(AF_INET, SOCK_STREAM)
-            self.cli.connect((server,12000))
+            self.cli.connect((server,port))
             self.root.current = 'mainwin'
         except Exception as e: 
             toast(f'Conexão Invalida - {e}')
